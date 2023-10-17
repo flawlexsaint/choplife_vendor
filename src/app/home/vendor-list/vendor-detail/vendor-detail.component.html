@@ -1,22 +1,30 @@
 <div class="bg-primary text-center py-[1.5rem]">
-  <div class="container mx-auto">
-    <div class="flex items-center justify-between">
+  <div class="container mx-auto px-[1rem]">
+    <div class="block sm:flex items-center justify-between">
       <p class="text-[#fff] text-[16px] font-bold">
         Need help placing an order? Call: 0912345678 or 0912345678 // OPEN from
         8am to 10pm.
       </p>
       <button
-        class="h-[40px] rounded-[8px] bg-[#fff] px-[1rem] text-[14px] font-medium"
+        class="hidden md:block h-[40px] rounded-[8px] bg-[#fff] px-[1rem] text-[14px] font-medium"
       >
         Get Started
       </button>
     </div>
   </div>
 </div>
+<img
+  src="/assets/images/layout-2.svg"
+  width="30px"
+  height="30px"
+  class="cursor-pointer fixed md:hidden z-10 top-[28%]"
+  alt=""
+  (click)="open('detail')"
+/>
 <div class="relative">
   <img src="/assets/images/detail-banner.png" class="w-[100%]" alt="" />
-  <div class="absolute top-[40%] w-[100%] ...">
-    <div class="container mx-auto">
+  <div class="absolute top-[30%] sm:top-[40%] w-[100%] ...">
+    <div class="container mx-auto px-[1rem]">
       <div class="flex items-center gap-[.5rem] my-[1rem]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,18 +41,18 @@
             stroke-linejoin="round"
           />
         </svg>
-        <p class="font-raleway text-[#fff] text-[16px] font-medium">Home</p>
-        <p class="font-raleway text-[#fff] text-[16px] font-medium">></p>
-        <p class="font-raleway text-[#fff] text-[16px] font-medium">
+        <p class="font-raleway text-[#fff] text-[14px] font-medium">Home</p>
+        <p class="font-raleway text-[#fff] text-[14px] font-medium">></p>
+        <p class="font-raleway text-[#fff] text-[14px] font-medium">
           Vendor List
         </p>
-        <p class="font-raleway text-[#fff] text-[16px] font-medium">></p>
-        <p class="font-raleway text-[#fff] text-[16px] font-medium">
-          > Mama ChopLife’s Pot
+        <p class="font-raleway text-[#fff] text-[14px] font-medium">></p>
+        <p class="font-raleway text-[#fff] text-[14px] font-medium">
+          Mama ChopLife’s Pot
         </p>
       </div>
       <div class="flex gap-[1rem]">
-        <div>
+        <div class="w-[100%]">
           <div
             class="bg-[#fff] rounded-[8px] py-[1rem] px-[2rem] shadow-sm mb-[2rem]"
           >
@@ -74,7 +82,7 @@
           </div>
           <div class="">
             <div class="flex container mx-auto vendor-list-bg">
-              <div class="sidebar w-[350px]">
+              <div class="hidden md:block sidebar md:w-[250px] lg:w-[350px]">
                 <div>
                   <p class="font-bold text-[20px] mt-[1rem]">Table</p>
                   <p class="font-bold text-[16px] mt-[1rem]">Most Popular</p>
@@ -137,10 +145,10 @@
                 <h4 class="text-[20px] font-bold text-[#2D2D2D] my-[1rem]">
                   Coca-Cola List
                 </h4>
-                <div class="grid grid-cols-2 gap-[1.5rem]">
+                <div class="grid sm:grid-cols-2 gap-[1.5rem]">
                   <div
                     *ngFor="let item of vendors.slice(0, 3)"
-                    routerLink="{{ item.id }}"
+                    (click)="open('detail')"
                   >
                     <div class="drop-shadow-sm rounded-[10px]">
                       <img
@@ -205,7 +213,7 @@
                 <h4 class="text-[20px] font-bold text-[#2D2D2D] my-[1rem]">
                   Amala List
                 </h4>
-                <div class="grid grid-cols-2 gap-[1.5rem]">
+                <div class="grid sm:grid-cols-2 gap-[1.5rem]">
                   <div
                     *ngFor="let item of vendors.slice(0, 2)"
                     class="cursor-pointer"
@@ -243,7 +251,7 @@
             </div>
           </div>
         </div>
-        <div class="w-[400px]">
+        <div class="hidden lg:block w-[400px]">
           <div
             class="bg-[#fff] rounded-[8px] py-[1rem] px-[2rem] shadow-sm mb-[2rem]"
           >
@@ -285,8 +293,15 @@
                 ₦7,600
               </h4>
             </div>
-            <button class="h-[50px] bg-[#C1CF65] rounded-[8px] w-[100%] mt-[1rem] text-[14px] font-bold">Proceed to Checkout: ₦7,600</button>
-            <h4 class="text-[14px] font-semibold text-[#2D2D2D66] text-center mt-[1rem]">
+            <button
+              class="h-[50px] bg-[#C1CF65] rounded-[8px] w-[100%] mt-[1rem] text-[14px] font-bold"
+              (click)="open('checkout')"
+            >
+              Proceed to Checkout: ₦7,600
+            </button>
+            <h4
+              class="text-[14px] font-semibold text-[#2D2D2D66] text-center mt-[1rem]"
+            >
               CLEAR CART
             </h4>
           </div>
@@ -295,3 +310,24 @@
     </div>
   </div>
 </div>
+
+<!-- Product Detail & Checkout -->
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  (nzOnClose)="close()"
+  nzWidth="395px"
+>
+  <div class="h-[90vh] flex items-center w-[350px]" *nzDrawerContent>
+    <ng-container *ngIf="screen === 'checkout'; else elseTemplate">
+      <app-checkout></app-checkout>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <app-product-detail></app-product-detail>
+    </ng-template>
+  </div>
+</nz-drawer>
+
+<!-- Menu -->
+<app-menu></app-menu>

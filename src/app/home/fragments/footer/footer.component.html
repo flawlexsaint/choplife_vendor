@@ -1,1 +1,56 @@
-<p>footer works!</p>
+<div class="bg-primary px-[1rem] pt-[5rem] pb-[1rem]">
+  <div class="container mx-auto">
+    <div class="block md:grid grid-cols-4">
+      <div class="mb-[1rem] flex justify-center sm:block">
+        <img src="/assets/images/footer-logo.svg" alt="" />
+      </div>
+      <div class="mb-[1rem] text-center sm:text-left">
+        <h4 class="block text-[24px] font-semibold text-[#2D2D2D] mb-[.7rem]">
+          Information
+        </h4>
+        <a
+          href=""
+          class="block text-[16px] text-[#2D2D2D] mb-[.7rem]"
+          *ngFor="let item of information"
+          >{{ item }}</a
+        >
+      </div>
+      <div class="mb-[1rem] text-center sm:text-left">
+        <h4 class="block text-[24px] font-semibold text-[#2D2D2D] mb-[.7rem]">
+          Useful Links
+        </h4>
+        <a
+          href=""
+          class="block text-[16px] text-[#2D2D2D] mb-[.7rem]"
+          *ngFor="let item of useful_links"
+          >{{ item }}</a
+        >
+      </div>
+      <div class="mb-[1rem] text-center sm:text-left">
+        <h4 class="block text-[24px] font-semibold text-[#2D2D2D] mb-[.7rem]">
+          Contact Us
+        </h4>
+        <a
+          href="tel:+234 23456789"
+          class="block text-[16px] text-[#2D2D2D] mb-[.7rem]"
+          >Tel: 234 23456789</a
+        >
+        <a
+          href="mailto: support@choplife.com"
+          class="block text-[16px] text-[#2D2D2D] mb-[.7rem]"
+        >
+          Mail: support@choplife.com</a
+        >
+        <div class="flex justify-between sm:justify-start gap-[1rem]">
+          <a href="" *ngFor="let item of social_icons">
+            <img src="/assets/images/{{ item }}.svg" alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr class="h-px my-[2rem] bg-[#2D2D2D] border-0" />
+    <h4 class="text-[14px] text-center font-normal text-[#2D2D2D] mb-[.7rem]">
+      2023 (c) Company Ltd. | All Right reserved
+    </h4>
+  </div>
+</div>

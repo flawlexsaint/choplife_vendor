@@ -5,6 +5,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./vendor-detail.component.scss'],
 })
 export class VendorDetailComponent {
+  visible = false;
+  menuVisible: boolean = false;
+  screen = 'detail';
   vendors: Array<any> = [
     { name: 'Mama  ChopLife’s Pot', location: 'Gwarimpa', fee: '₦760', id: 1 },
     { name: 'Mama  ChopLife’s Pot', location: 'Gwarimpa', fee: '₦760', id: 2 },
@@ -23,4 +26,24 @@ export class VendorDetailComponent {
     { name: 'Sallah Meat', location: 'Gwarimpa', fee: '₦760', id: 3 },
     { name: 'Shawarma', location: 'Gwarimpa', fee: '₦760', id: 3 },
   ];
+
+  open(screen: string): void {
+    this.visible = true;
+    switch (screen) {
+      case 'checkout':
+        this.screen = screen;
+        break;
+
+      case 'detail':
+        this.screen = screen;
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  close(): void {
+    this.visible = false;
+  }
 }

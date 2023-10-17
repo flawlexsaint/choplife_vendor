@@ -7,9 +7,16 @@ import { NavbarComponent } from './fragments/navbar/navbar.component';
 import { FooterComponent } from './fragments/footer/footer.component';
 import { ContactComponent } from './fragments/contact/contact.component';
 import { VendorListComponent } from './vendor-list/vendor-list.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [HomeComponent, NavbarComponent, FooterComponent, ContactComponent, VendorListComponent],
-  imports: [CommonModule, HomeRoutingModule],
+  declarations: [
+    HomeComponent,
+    NavbarComponent,
+    FooterComponent,
+    ContactComponent,
+    VendorListComponent,
+  ],
+  imports: [CommonModule, HomeRoutingModule, SharedModule],
 })
 export class HomeModule {}

@@ -1,0 +1,59 @@
+<div>
+  <div>
+    <div class="flex items-center">
+      <div class="">
+        <button
+          class="h-[50px] rounded-[8px] bg-primary w-[200px] flex justify-around items-center"
+        >
+          <img src="/assets/images/arrow.svg" alt="" />
+          <span class="font-bold text-[#FFFFFF] text-[16px]">Checkout</span>
+          <img src="/assets/images/cart.svg" alt="" />
+        </button>
+      </div>
+    </div>
+    <div class="flex justify-between mt-[2rem]">
+      <p class="text-[14px] text-[#2D2D2D]">Order From:</p>
+      <p class="text-[14px] text-[#2D2D2D] font-bold">Vendor Name goes here</p>
+    </div>
+    <div class="flex justify-between mt-[1rem] gap-[4rem]">
+      <p class="text-[14px] text-[#2D2D2D]">Estimated Delivery Time:</p>
+      <p class="text-[14px] text-[#2D2D2D] font-bold">24 ~ 42 Minutes</p>
+    </div>
+    <hr class="h-px my-[1rem] bg-[#55565A1F] border-0" />
+    <div class="flex justify-between my-[1rem]" *ngFor="let item of [1, 2, 4]">
+      <div class="flex items-start gap-3">
+        <img src="/assets/images/trash.svg" class="mt-[.3rem]" alt="" />
+        <div>
+          <h4 class="text-[14px] font-normal text-[#2D2D2D]">
+            Hot Big Plantain
+          </h4>
+          <h4 class="text-[14px] font-bold text-[#2D2D2D]">₦1,400</h4>
+        </div>
+      </div>
+      <div
+        class="flex items-center rounded-[14px] bg-[#F8F9F9] gap-[.5rem] px-[1rem] h-[22px]"
+      >
+        <button>
+          <img src="/assets/images/minus.svg" alt="" />
+        </button>
+        <span class="text-[16px] font-normal"> 6 </span>
+        <button>
+          <img src="/assets/images/plus.svg" alt="" />
+        </button>
+      </div>
+    </div>
+    <hr class="h-px my-[1rem] bg-[#55565A1F] border-0" />
+    <div
+      class="flex justify-between my-[1rem]"
+      *ngFor="let item of [1, 2, 3, 4, 5]"
+    >
+      <p class="text-[14px] text-[#2D2D2D]">Subtotal:</p>
+      <p class="text-[14px] text-[#2D2D2D] font-bold">₦3,400</p>
+    </div>
+    <button
+      class="h-[50px] bg-[#C1CF65] rounded-[8px] w-[100%] mt-[1rem] text-[14px] font-bold"
+    >
+      Pay & Checkout
+    </button>
+  </div>
+</div>
