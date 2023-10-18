@@ -1,7 +1,7 @@
 <!-- Menu Drawer -->
 <button
-  class="h-[50px] w-[50px] p-[.4rem] rounded-[8px] bg-primary fixed md:hidden z-10 bottom-[2%] right-[6%]"
-  (click)="open()"
+  class="h-[50px] w-[50px] p-[.4rem] rounded-[8px] bg-primary fixed lg:hidden z-10 bottom-[2%] right-[6%] md:right-[2%]"
+  (click)="open('menu', 'bottom')"
 >
   <img
     src="/assets/images/grid.svg"
@@ -12,21 +12,91 @@
   />
 </button>
 <nz-drawer
-  [nzClosable]="false"
-  [nzVisible]="menuVisible"
-  nzPlacement="bottom"
-  (nzOnClose)="close()"
+  nzWidth="300px"
   nzHeight="230px"
-  nzWidth="395px"
+  [nzClosable]="false"
+  (nzOnClose)="close()"
+  [nzPlacement]="placement"
+  [nzVisible]="menuVisible"
 >
   <div class="" *nzDrawerContent>
-    <a class="block" href="">Hot Meal</a>
-    <a class="block mt-[1rem]" href="">About</a>
-    <a class="block mt-[1rem]" href="">Contact Us</a>
-    <button
-      class="mt-[2rem] w-[100%] bg-primary text-[#fff] h-[50px] rounded-[8px] font-bold"
-    >
-      Get Started
-    </button>
+    <ng-container *ngIf="screen === 'menu'">
+      <div class="flex items-start justify-between">
+        <div>
+          <a class="block" href="">Hot Meal</a>
+          <a class="block mt-[1rem]" href="">About</a>
+          <a class="block mt-[1rem]" href="">Contact Us</a>
+        </div>
+        <button
+          (click)="open('cart', 'right')"
+          class="h-[45px] w-[45px] flex items-center justify-center rounded-[50%] bg-[#C1CF65]"
+        >
+          <img src="/assets/images/cart-check.svg" alt="" />
+        </button>
+      </div>
+      <button
+        class="mt-[2rem] w-[100%] bg-primary text-[#fff] h-[50px] rounded-[8px] font-bold"
+      >
+        Get Started
+      </button>
+    </ng-container>
+    <ng-container *ngIf="screen === 'cart'">
+      <div>
+        <div class="bg-[#fff] rounded-[8px] py-[1rem] shadow-sm mb-[2rem]">
+          <h4 class="text-[36px] font-bold text-[#2D2D2D]">My Cart</h4>
+          <h4 class="text-[14px] font-normal text-[#2D2D2D] mt-[1rem]">
+            Total Item(s) in Cart: <span class="font-bold">6</span>
+          </h4>
+          <div
+            class="flex justify-between my-[2rem]"
+            *ngFor="let item of [1, 2, 3, 4]"
+          >
+            <div class="flex items-start gap-3">
+              <img src="/assets/images/trash.svg" class="mt-[.3rem]" alt="" />
+              <div>
+                <h4 class="text-[14px] font-normal text-[#2D2D2D]">
+                  Hot Big Plantain
+                </h4>
+                <h4 class="text-[14px] font-bold text-[#2D2D2D]">₦1,400</h4>
+              </div>
+            </div>
+            <div
+              class="flex items-center rounded-[14px] bg-[#F8F9F9] gap-[.5rem] px-[1rem] h-[22px]"
+            >
+              <button>
+                <img src="/assets/images/minus.svg" alt="" />
+              </button>
+              <span class="text-[16px] font-normal"> 6 </span>
+              <button>
+                <img src="/assets/images/plus.svg" alt="" />
+              </button>
+            </div>
+          </div>
+          <hr class="h-px my-[.5rem] bg-[#C1CF65] border-0" />
+          <div class="flex justify-between">
+            <h4 class="text-[14px] font-bold text-[#2D2D2D] mt-[1rem]">
+              Total
+            </h4>
+            <h4 class="text-[14px] font-bold text-[#2D2D2D] mt-[1rem]">
+              ₦7,600
+            </h4>
+          </div>
+          <button
+            class="h-[50px] bg-[#C1CF65] rounded-[8px] w-[100%] mt-[1rem] text-[14px] font-bold"
+            (click)="open('checkout', 'right')"
+          >
+            Proceed to Checkout: ₦7,600
+          </button>
+          <h4
+            class="text-[14px] font-semibold text-[#2D2D2D66] text-center mt-[1rem]"
+          >
+            CLEAR CART
+          </h4>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="screen === 'checkout'">
+      <app-checkout></app-checkout>
+    </ng-container>
   </div>
 </nz-drawer>

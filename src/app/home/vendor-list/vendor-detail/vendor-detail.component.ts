@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 export class VendorDetailComponent {
   visible = false;
   menuVisible: boolean = false;
+  sidebarVisible: boolean = false;
   screen = 'detail';
   vendors: Array<any> = [
     { name: 'Mama  ChopLife’s Pot', location: 'Gwarimpa', fee: '₦760', id: 1 },

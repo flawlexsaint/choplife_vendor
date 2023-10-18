@@ -7,8 +7,6 @@ import { Component } from '@angular/core';
 export class VendorListComponent {
   sortVisible: boolean = true;
   streetLaneVisible: boolean = true;
-  screen = 'detail';
-  visible: boolean = false;
   menuVisible: boolean = false;
   vendors: Array<any> = [
     { name: 'Mama  ChopLife’s Pot', location: 'Gwarimpa', fee: '₦760', id: 1 },
@@ -30,24 +28,4 @@ export class VendorListComponent {
   goBack = () => {
     history.back();
   };
-
-  open(screen: string): void {
-    this.visible = true;
-    switch (screen) {
-      case 'checkout':
-        this.screen = screen;
-        break;
-
-      case 'detail':
-        this.screen = screen;
-        break;
-
-      default:
-        break;
-    }
-  }
-
-  close(): void {
-    this.visible = false;
-  }
 }

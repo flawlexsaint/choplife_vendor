@@ -126,20 +126,7 @@
       </ng-container>
     </div>
     <div class="content p-[1rem] pt-[2rem] w-[100%]">
-      <div
-        class="sm:hidden flex gap-[1rem] items-center absolute z-10 top-[33%]"
-      >
-        <img
-          src="/assets/images/layout-2.svg"
-          width="30px"
-          height="30px"
-          class="cursor-pointer"
-          alt=""
-          (click)="open('detail')"
-        />
-        <p>Showing 1,234 Vendors</p>
-      </div>
-      <p class="sm:block hidden">Showing 1,234 Vendors</p>
+      <p>Showing 1,234 Vendors</p>
       <h4 class="text-[20px] font-bold text-[#2D2D2D] my-[1rem]">Promotions</h4>
       <img
         src="/assets/images/promotions.png"
@@ -219,100 +206,11 @@
   </div>
 </div>
 
-<!-- Product Detail & Checkout -->
-<nz-drawer
-  [nzClosable]="false"
-  [nzVisible]="visible"
-  nzPlacement="left"
-  (nzOnClose)="close()"
-  nzWidth="300px"
->
-  <div class="h-[90vh] flex items-center w-[350px]" *nzDrawerContent>
-    <ng-container *ngIf="screen === 'checkout'; else elseTemplate">
-      <app-checkout></app-checkout>
-    </ng-container>
-    <ng-template #elseTemplate>
-      <div class="sidebar w-[200px]">
-        <div
-          class="flex items-center gap-[.5rem] mt-[2rem] cursor-pointer"
-          (click)="goBack()"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M10 8L6 12M6 12L10 16M6 12L18 12"
-              stroke="#2D2D2D"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <p class="font-raleway text-[#2D2D2D] text-[16px] font-semibold">
-            Home
-          </p>
-          <p class="font-raleway text-[#2D2D2D] text-[16px] font-semibold">></p>
-          <p class="font-raleway text-[#2D2D2D] text-[16px] font-semibold">
-            Vendor List
-          </p>
-        </div>
-        <div>
-          <p class="font-bold text-[20px] mt-[1rem]">Filter</p>
-          <div
-            class="flex items-center justify-between mt-[1rem] cursor-pointer"
-            (click)="sortVisible = !sortVisible"
-          >
-            <p class="font-bold text-[16px]">Sort</p>
-            <ng-container *ngIf="sortVisible; else sortIcon">
-              <img src="/assets/images/arrow-up.svg" alt="" />
-            </ng-container>
-            <ng-template #sortIcon>
-              <img src="/assets/images/arrow-down.svg" alt="" />
-            </ng-template>
-          </div>
-          <ng-container *ngIf="sortVisible">
-            <div
-              class="flex items-center gap-[1rem] px-[1rem] py-[.5rem] cursor-pointer"
-              *ngFor="let item of sort"
-            >
-              <img src="/assets/images/check-circle.svg" alt="" />
-              <p class="text-[#2D2D2D] text-[16px] font-normal">
-                {{ item.name }}
-              </p>
-            </div>
-          </ng-container>
-        </div>
-        <div
-          class="flex items-center justify-between mt-[1rem] cursor-pointer"
-          (click)="streetLaneVisible = !streetLaneVisible"
-        >
-          <p class="font-bold text-[16px]">Street Lane</p>
-          <ng-container *ngIf="streetLaneVisible; else streetLaneIcon">
-            <img src="/assets/images/arrow-up.svg" alt="" />
-          </ng-container>
-          <ng-template #streetLaneIcon>
-            <img src="/assets/images/arrow-down.svg" alt="" />
-          </ng-template>
-        </div>
-        <ng-container *ngIf="streetLaneVisible">
-          <div
-            class="flex items-center gap-[1rem] px-[1rem] py-[.5rem] cursor-pointer"
-            *ngFor="let item of street_lane"
-          >
-            <img src="/assets/images/{{ item.icon }}.svg" alt="" />
-            <p class="text-[#2D2D2D] text-[16px] font-normal">
-              {{ item.name }}
-            </p>
-          </div>
-        </ng-container>
-      </div>
-    </ng-template>
-  </div>
-</nz-drawer>
+<!-- Side-menu Mobile -->
+<app-mobile-sidebar
+  [sort]="sort"
+  [street_lane]="street_lane"
+></app-mobile-sidebar>
 
 <!-- Menu Drawer -->
 <app-menu></app-menu>

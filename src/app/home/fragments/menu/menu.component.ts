@@ -7,8 +7,12 @@ import { Component } from '@angular/core';
 })
 export class MenuComponent {
   menuVisible: boolean = false;
+  screen: string = 'menu';
+  placement: any = 'bottom';
 
-  open(): void {
+  open(screen: string, placement: string): void {
+    this.screen = screen;
+    this.placement = placement;
     this.menuVisible = true;
   }
 
